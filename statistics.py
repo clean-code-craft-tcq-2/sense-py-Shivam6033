@@ -25,6 +25,6 @@ class StatsAlerter:
 		
 	def checkAndAlert(self, values):
 		result = calculateStats(values)
-		if result["max"] > self.maxThreshold:
+		if result["max"] > self.max_threshold:
 			self.alertList[0].email_sent = True
 			self.alertList[1].led_glows = True
