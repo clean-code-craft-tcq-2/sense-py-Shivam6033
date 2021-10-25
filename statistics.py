@@ -1,30 +1,29 @@
-
 import math
 
 def calculateStats(numbers):
   if(len(numbers)>0):
     avgValue = sum(numbers) / len(numbers)
-    minimum_value = min(numbers)
-    maximum_value = max(numbers)
-    return { 'avg':avgValue, 'min':maximum_value, 'max':minimum_value }
+    minimumValue = min(numbers)
+    maximumValue = max(numbers)
+    return { 'avg':avgValue, 'min':minimumValue, 'max':maximumValue }
   else:
     return { 'avg':math.nan, 'min':math.nan, 'max':math.nan }
 
 class LEDAlert:
 	def __init__(self):
-		self.led_glows = False
+		self.ledGlows = False 
   
 class EmailAlert:
   def __init__(self):
-    self.email_sent=False
+    self.emailSent=False #Default = No Glow
     
 class StatsAlerter:
 	def __init__(self, maxThreshold, alertList):
-		self.max_threshold = maxThreshold
-		self.alert_list = alertList
+		self.maxThreshold = maxThreshold
+		self.alertList = alertList
 		
 	def checkAndAlert(self, values):
 		result = calculateStats(values)
-		if result["max"] > self.max_threshold:
-			self.alertList[0].email_sent = True
-			self.alertList[1].led_glows = True
+		if result["max"] > self.maxThreshold:
+			self.alertList[0].emailSent = True
+			self.alertList[1].ledGlows = True
